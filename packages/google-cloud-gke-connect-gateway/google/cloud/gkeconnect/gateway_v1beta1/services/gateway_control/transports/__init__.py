@@ -13,9 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .control import GenerateCredentialsRequest, GenerateCredentialsResponse
+from collections import OrderedDict
+from typing import Dict, Type
+
+from .base import GatewayControlTransport
+from .grpc import GatewayControlGrpcTransport
+from .grpc_asyncio import GatewayControlGrpcAsyncIOTransport
+
+# Compile a registry of transports.
+_transport_registry = OrderedDict()  # type: Dict[str, Type[GatewayControlTransport]]
+_transport_registry["grpc"] = GatewayControlGrpcTransport
+_transport_registry["grpc_asyncio"] = GatewayControlGrpcAsyncIOTransport
 
 __all__ = (
-    "GenerateCredentialsRequest",
-    "GenerateCredentialsResponse",
+    "GatewayControlTransport",
+    "GatewayControlGrpcTransport",
+    "GatewayControlGrpcAsyncIOTransport",
 )

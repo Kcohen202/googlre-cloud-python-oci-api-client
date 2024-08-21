@@ -13,9 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .control import GenerateCredentialsRequest, GenerateCredentialsResponse
+from google.cloud.gkeconnect.gateway_v1 import gapic_version as package_version
+
+__version__ = package_version.__version__
+
+
+from .services.gateway_control import GatewayControlAsyncClient, GatewayControlClient
+from .types.control import GenerateCredentialsRequest, GenerateCredentialsResponse
 
 __all__ = (
+    "GatewayControlAsyncClient",
+    "GatewayControlClient",
     "GenerateCredentialsRequest",
     "GenerateCredentialsResponse",
 )
